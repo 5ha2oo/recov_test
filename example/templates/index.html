@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+
+
+{% regroup data by training as list %}
+
+<div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h2>Plan Rehabilitacji</h2>
+			<ul class="timeline">
+                {% for training in list %}
+				<li>
+                    <h1>{{ training.grouper }}</h1>
+                    <ul>
+
+                    {% for t in training.list %}
+                        <li><a>{{ t.exercise.name }}</a> - {{ t.exercise.type }} - {{ t.exercise.description }}</li>
+                    {% endfor %}
+                    </ul>
+				</li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}
